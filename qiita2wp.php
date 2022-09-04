@@ -1,7 +1,6 @@
 <?php
 /*
 Plugin Name: Qiita2WP
-Plugin URI: https://fulfills.jp/
 Description: WordPress Plugin for Qiita Users. Automatically crawling your Qiita articles and place links (posts) on your WordPress site.
 Author: Kai Sugahara
 Author URI: https://fulfills.jp/
