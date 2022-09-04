@@ -26,6 +26,14 @@ function qiita2wp_add_page() {
 }
 add_action('admin_menu', 'qiita2wp_add_page');
 
+// ADD SETTING-PAGE-LINK to PLUGINS PAGE
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), function($links){
+    $url = admin_url( 'options-general.php?page=qiita2wp_add_adminpage' );
+    $html = "<a href=\"${url}\">設定</a>";
+    array_unshift($links, $html);
+    return $links;
+} );
+
 // INCLUDE
 include_once 'lib/init.php';
 include_once 'lib/update.php';
