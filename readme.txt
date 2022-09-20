@@ -1,6 +1,6 @@
 === Ads With Clusters By FULFILLs ===
 Contributors: fulfills
-Tags: optimization of display advertising
+Tags: 
 Requires at least: 6.0.2
 Tested up to: 6.0.2
 Stable tag: 1.0.0
@@ -21,8 +21,8 @@ Requires PHP: 7.0
 == Installation ==
 
 1. From the WP admin panel, click “Plugins” -> “Add new”.
-2. In the browser input box, type “Qiita2WP”.
-3. Select the “Qiita2WP” plugin and click “Install”.
+2. In the browser input box, type “Import Qiita2WP”.
+3. Select the “Import Qiita2WP” plugin and click “Install”.
 4. Activate the plugin.
 
 OR…

@@ -1,6 +1,6 @@
-# Qiita2WP
+# Import Qiita2WP
 
-自動的にQiitaに書いた記事をWordPressに取り込む、WordPressプラグイン「Qiita2WP」です。
+自動的にQiitaに書いた記事をWordPressに取り込む、WordPressプラグイン「Import Qiita2WP」です。
 
 ## リンク
 

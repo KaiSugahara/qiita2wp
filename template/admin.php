@@ -6,21 +6,21 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-function qiita2wp_add_admin_page() { 
+function import_qiita2wp_add_admin_page() { 
 
     // SAVE
-    if($options = qiita2wp_sanitize($_POST)) {
-        update_option( 'qiita2wp_settings', $options );
-        $error_message = qiita2wp_update();
+    if($options = import_qiita2wp_sanitize($_POST)) {
+        update_option( 'import_qiita2wp_settings', $options );
+        $error_message = import_qiita2wp_update();
     }
 
     // READ
-    $options = get_option( 'qiita2wp_settings', [] );
+    $options = get_option( 'import_qiita2wp_settings', [] );
 
 ?>
     
     <div class="wrap">
-        <h1>Qiita2WP 設定</h1>
+        <h1>Import Qiita2WP 設定</h1>
         <h2>基本設定</h2>
         <?php if(isset($error_message)):?>
             <div id="setting-error-settings_updated" class="notice notice-success settings-error is-dismissible"> 
@@ -76,7 +76,7 @@ function qiita2wp_add_admin_page() {
 
         <h2>実行ログ（最大50件）</h2>
         <?php
-            $log_array = get_option( 'qiita2wp_logs', [] );
+            $log_array = get_option( 'import_qiita2wp_logs', [] );
             $str = '<textarea rows="10" style="width: 100%; background-color: #FFFFFF;" readonly>';
             if($log_array) {
                 foreach(array_reverse($log_array) as $t => $m) $str .= "${m}（${t}）\n";

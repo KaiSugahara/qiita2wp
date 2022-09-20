@@ -6,7 +6,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-function qiita2wp_getrequest2qiita($token = "", $page_num=1) {
+function import_qiita2wp_getrequest2qiita($token = "", $page_num=1) {
     
     $url = "https://qiita.com/api/v2/authenticated_user/items?page=${page_num}&per_page=100";
 
@@ -27,19 +27,19 @@ function qiita2wp_getrequest2qiita($token = "", $page_num=1) {
     return $data;
 }
 
-function qiita2wp_update() {
+function import_qiita2wp_update() {
     
-    $options = get_option( 'qiita2wp_settings', [] );
+    $options = get_option( 'import_qiita2wp_settings', [] );
 
     // TOKEN CHECK
     if(!$options['your_token']) {
-        qiita2wp_add_log_message("Error!トークンが設定されていません。");
+        import_qiita2wp_add_log_message("Error!トークンが設定されていません。");
         return "Error!トークンが設定されていません。";
     }
 
     // CATEGORY CHECK
     if(!$options['set_category']) {
-        qiita2wp_add_log_message("Error!カテゴリが設定されていません。");
+        import_qiita2wp_add_log_message("Error!カテゴリが設定されていません。");
         return "Error!カテゴリが設定されていません。";
     }
 
@@ -50,7 +50,7 @@ function qiita2wp_update() {
     $data_id = [];
 
     $i = 1;
-    while($row_data = qiita2wp_getrequest2qiita($options['your_token'], $i++)) {
+    while($row_data = import_qiita2wp_getrequest2qiita($options['your_token'], $i++)) {
         $data_title += array_column($row_data, 'title', 'id');
         $data_time += array_column($row_data, 'updated_at', 'id');
         $data_url += array_column($row_data, 'url', 'id');
@@ -91,12 +91,12 @@ function qiita2wp_update() {
                 'post_status' => 'publish',
             );
             $post_id = wp_insert_post($post);
-            update_post_meta( $post_id, 'qiita2wp_url', $data_url[$qiita_id] );
+            update_post_meta( $post_id, 'import_qiita2wp_url', $data_url[$qiita_id] );
         }
 
     }
 
-    qiita2wp_add_log_message("記事の更新が完了しました。");
+    import_qiita2wp_add_log_message("記事の更新が完了しました。");
     return '';
 
 }
