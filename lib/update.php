@@ -10,21 +10,17 @@ function import_qiita2wp_getrequest2qiita($token = "", $page_num=1) {
     
     $url = "https://qiita.com/api/v2/authenticated_user/items?page=${page_num}&per_page=100";
 
-    $headers = [
-        "Authorization: Bearer ${token}",
-    ];
-
-    $options = [
-        'http' => [
-            'method' => 'GET',
-            'header' => implode( '\r\n', $headers ),
+    $args = [
+        'headers' => [
+            'Authorization' => "Bearer ${token}",
         ],
     ];
 
-    $data = file_get_contents( $url, false, stream_context_create( $options ) );
-    $data = json_decode($data);
+    $response = wp_remote_get($url, $args);
+    $body = wp_remote_retrieve_body( $response );
 
-    return $data;
+    return json_decode($body);
+
 }
 
 function import_qiita2wp_update() {
