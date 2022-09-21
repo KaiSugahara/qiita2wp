@@ -1,4 +1,4 @@
-=== Ads With Clusters By FULFILLs ===
+=== Import Qiita2WP ===
 Contributors: fulfills
 Tags: 
 Requires at least: 6.0.2
